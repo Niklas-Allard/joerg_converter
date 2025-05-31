@@ -44,7 +44,7 @@ func convertFile(filePath, sourceExt, targetExt string) {
 	targetPath := strings.TrimSuffix(filePath, "."+sourceExt) + "." + targetExt
 
 	// ffmpeg-Befehl ausführen
-	cmd := exec.Command("ffmpeg", "-i", filePath, targetPath)
+	cmd := exec.Command("ffmpeg", "-i", filePath, "-c", "copy", targetPath)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
