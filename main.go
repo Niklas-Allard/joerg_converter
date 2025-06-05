@@ -69,14 +69,14 @@ func convertFile(filePath, sourceExt, targetExt, userCodec string) {
 			fmt.Printf("Error converting %s to AVC: %v\n", filePath, err)
 			return
 		}
+
+		// Delete the original file if the conversion was successful
+		if err := os.Remove(filePath); err != nil {
+			fmt.Printf("Error deleting the original file %s: %v\n", filePath, err)
+		}
 	} else {
 		// Execute ffmpeg command
 		fmt.Println("Codec not the user preferred")
-	}
-
-	// Delete the original file if the conversion was successful
-	if err := os.Remove(filePath); err != nil {
-		fmt.Printf("Error deleting the original file %s: %v\n", filePath, err)
 	}
 }
 
