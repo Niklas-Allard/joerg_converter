@@ -73,6 +73,13 @@ func convertFile(filePath, sourceExt, targetExt, userCodec string) {
 		// Delete the original file if the conversion was successful
 		if err := os.Remove(filePath); err != nil {
 			fmt.Printf("Error deleting the original file %s: %v\n", filePath, err)
+			return
+		}
+
+		// Rename the converted file to remove "_converted"
+		finalPath := strings.TrimSuffix(filePath, "."+sourceExt) + "." + targetExt
+		if err := os.Rename(targetPath, finalPath); err != nil {
+			fmt.Printf("Error renaming file %s to %s: %v\n", targetPath, finalPath, err)
 		}
 	} else {
 		// Execute ffmpeg command
