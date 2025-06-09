@@ -55,6 +55,7 @@ func convertFile(filePath, sourceExt, targetExt, userCodec string) {
 	}
 
 	// Debugging output
+	fmt.Printf("The file name: %v\n", filePath)
 	fmt.Printf("Extracted codec: %s\n", codec)
 	fmt.Printf("User-defined codec: %s\n", userCodec)
 
